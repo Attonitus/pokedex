@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>Pokédex</title>
+  <meta property="og:title" content="Pokédex interactiva" />
+  <meta property="og:type" content="Website" />
+  <meta property="og:url" content="https://attonitus.github.io/pokedex/" />
+  <meta property="og:image" content="https://d1ngjctyujvjjy.cloudfront.net/projects/covers/6d22b54f-e756-4e90-b761-c0bc00a00fbf/Thumbnail-pokedex.jpg" />
+  <meta property="og:description" 
+  content="¡Consulta los datos de tu Pokémon favorito o cualquier otro que desees!" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+  <link rel="manifest" href="./favicon/site.webmanifest">
+  <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+  <main class="pokedex" tabindex="0">
+    <section class="pokedex-main" aria-label="Información general del Pokémon">
+      <div class="header-shadow">
+        <div class="header">
+          <span class="light is-big is-sky"></span>
+          <span class="light is-red">luz 2</span>
+          <span class="light is-yellow">luz 3</span>
+          <span class="light is-green">luz 4</span>
+        </div>
+      </div>
+      <div class="screen">
+        <div class="screen-border">
+          <div class="screen-safeArea">
+            <img src="" alt="" id="image" width="150">
+          </div>
+          <div class="screen-border-elements">
+            <span class="buttonRed"></span>
+            <span class="buttonRed"></span>
+          </div>
+          <div class="screen-border-ham">
+            <img src="./img/button.png" width="22" height="14" alt="Decoración" >
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="variants">
+          <button aria-label="Pokémon aleatorio" class="variants-big"></button>
+          <button aria-hidden="true" class="variants-small is-yellow"></button>
+          <button aria-hidden="true" class="variants-small"></button>
+
+        </div>
+        <form role="search" id="form" class="search">
+          <input type="text" name="id" placeholder="Número de Pokémon" autocomplete="off">
+        </form>
+
+        <div class="navigation">
+          <button id="next-pokemon" class="navigation-right" aria-label="Siguiente Pokémon"></button>
+          <button id="prev-pokemon" class="navigation-left" aria-label="Anterior Pokémon"></button>
+
+          <button id="next-image" class="navigation-down" aria-label="Siguiente variante del Pokémon"></button>
+          <button id="prev-image" class="navigation-up" aria-label="Anterior variante del Pokémon"></button>
+
+        </div>
+        <div class="description">
+          <p id="pokedex-info">Busca un Pokémon para obtener todas sus caracteristicas.</p>
+        </div>
+
+      </div>
+    </section>
+    <div class="cover-front" >
+
+    </div>
+    <section class="cover-back" aria-label="Estadisticas del Pokémon">
+      <div class="stats">
+        stats
+      </div>
+    </section>
+  </main>
+  <script src="./js/index.js" type="module"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,38 @@
+.variants {
+    grid-area: variants;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.variants > *:active {
+    transform: scale(.9);
+
+}
+
+.variants-big {
+    block-size: 3rem;
+    inline-size: 3rem;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    border: 0;
+    outline: none;
+    box-shadow: inset -3px -2px 0 0 black;
+
+}
+
+.variants-big:focus {
+    box-shadow: inset 0 0 0 2px black;
+}
+
+.variants-small {
+    inline-size: 1.75rem;
+    block-size: .5rem;
+    border-radius: .5rem;
+    background-color: var(--secondary);
+    border: 0;
+}
+
+.variants-small.is-yellow{
+    background-color: #FECB2F;
+}

@@ -1,0 +1,48 @@
+.cover {
+
+}
+
+.cover-front {
+    inline-size: inherit;
+    block-size: inherit;
+    background-color: var(--primary);
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    /* transicion de la animacion */
+    transition: 1s transform;
+    /* //Origen de donde va a rotar */
+    transform-origin: right center;
+    /* ocultar la parte trasera */
+    backface-visibility: hidden;
+
+    border-end-start-radius: .5rem;
+    border-inline-end: .25rem solid #ba111f;
+    box-sizing: border-box;
+    clip-path: polygon(0 4.75rem, 70% 3.25rem, 100% 3.25rem ,100% 100%, 0 100%);
+
+}
+
+.cover-back {
+    inline-size: inherit;
+    block-size: inherit;
+    background-color: var(--primary);
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    /* Se mueve el elemento para que se encuentre encima del otro */
+    inset-inline-start: 100%;
+    /* se oculta para mostrar sólo la cara de enfrente */
+    backface-visibility: hidden;
+    /* giramos en -180 para que parezca que es la parte trasera */
+    transform: rotateY(-180deg);
+    transition: 1s transform;
+    transform-origin: left center;
+    padding: 1.5rem;
+    padding-block-start: 6.25rem;
+    clip-path: polygon(0 3.25rem, 30% 3.25rem, 100% 4.75rem, 100% 100%, 0 100%);
+    display: flex;
+    box-sizing: border-box;
+    border-end-end-radius: .5rem;
+    border-inline-start: .25rem solid #ba111f;
+}
