@@ -24,11 +24,11 @@
   <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-  <main class="pokedex" tabindex="0">
+  <main class="pokedex" id="pokedex" tabindex="0">
     <section class="pokedex-main" aria-label="Información general del Pokémon">
       <div class="header-shadow">
         <div class="header">
-          <span class="light is-big is-sky"></span>
+          <span id="light" class="light is-big is-sky"></span>
           <span class="light is-red">luz 2</span>
           <span class="light is-yellow">luz 3</span>
           <span class="light is-green">luz 4</span>
@@ -36,7 +36,7 @@
       </div>
       <div class="screen">
         <div class="screen-border">
-          <div class="screen-safeArea">
+          <div class="screen-safeArea" id="screen">
             <img src="" alt="" id="image" width="150">
           </div>
           <div class="screen-border-elements">
@@ -50,13 +50,13 @@
       </div>
       <div class="actions">
         <div class="variants">
-          <button aria-label="Pokémon aleatorio" class="variants-big"></button>
+          <button id="random" aria-label="Pokémon aleatorio" class="variants-big"></button>
           <button aria-hidden="true" class="variants-small is-yellow"></button>
           <button aria-hidden="true" class="variants-small"></button>
 
         </div>
         <form role="search" id="form" class="search">
-          <input type="text" name="id" placeholder="Número de Pokémon" autocomplete="off">
+          <input id="input" type="text" name="id" placeholder="Número de Pokémon" autocomplete="off">
         </form>
 
         <div class="navigation">

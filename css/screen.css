@@ -17,6 +17,7 @@
     box-sizing: border-box;
     background-size: cover;
     position: relative;
+    background-position: center;
 }
 
 .screen-border-elements {

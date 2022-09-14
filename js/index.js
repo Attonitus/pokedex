@@ -1,29 +1,83 @@
 //Importamos las funciones del módulo api
-import { getPokemon, getSpecies } from "./api.js"
+import { setPokemon, setImage } from "./pokedex.js"
+
 
 //Selector Formulario del cual capturaremos la id
 const $form = document.querySelector('#form')
+//Selector del icon de next pokemon
+const $next = document.querySelector('#next-pokemon')
+//Selector del icon de prev pokemon
+const $prev = document.querySelector('#prev-pokemon')
+const $input = document.querySelector('#input')
+const $nextImage = document.querySelector('#next-image')
+const $prevImage = document.querySelector('#prev-image')
 
-//Selector de la imagen donde se ubicará el pokemon
-const $image= document.querySelector('#image')
+const $pokedex = document.querySelector('#pokedex')
 
-//Selector del parrafo donde se ubicará la descripción del pokemon
-const $info = document.querySelector('#pokedex-info')
+
+const $randomButton = document.querySelector('#random')
+
+$form.addEventListener('submit', handleSubmit)
+$next.addEventListener('click', handleNextPokemon)
+$prev.addEventListener('click', handlePrevPokemon)
+$randomButton.addEventListener('click', handleRandomPokemon)
+$nextImage.addEventListener('click', handleNextImage)
+$prevImage.addEventListener('click', handlePrevImage)
+
+
+let activePokemon = null
 
 //Función asyncrona, por ello el async
-$form.addEventListener('submit', async (event) =>{
+async function handleSubmit(event) {
     //prevent previene el reinicio de pagina con el submit
     event.preventDefault()
+    $pokedex.classList.add('is-open')
     //Formateamos la data obtenida del input
     const form = new FormData($form)
     const id = form.get('id')
-    //Obtenemos el pokemon y la especie
-    const pokemon = await getPokemon(id)
-    const species = await getSpecies(id)
-    //Realizamos una función donde va a buscar dentro de flavor text
-    //que language.name sea igual a es (español)
-    const descripción = species.flavor_text_entries.find(flavor => flavor.language.name === 'es')
-    $info.textContent = descripción.flavor_text
-    $image.src = pokemon.sprites.front_default
-    console.log(descripción) //Obtenemos lo escrito en el input
-})
+    activePokemon = await setPokemon(id);
+
+}
+
+async function handleNextPokemon(){
+    const id = (activePokemon === null || activePokemon.id === 898) ? 1 : activePokemon.id +1 
+    activePokemon = await setPokemon(id)
+    $input.value = id
+}
+
+async function handlePrevPokemon(){
+    const id = (activePokemon === null || activePokemon.id === 1) ? 898 : activePokemon.id -1 
+    activePokemon = await setPokemon(id)
+    $input.value = id
+}
+
+async function handleRandomPokemon(){
+    let rand = Math.random() * 898;
+    const rend = Math.floor(rand); // 99
+    activePokemon = await setPokemon(rend)
+    $input.value = rend
+}
+
+let activeSprite = 0
+
+function handleNextImage() {
+    if(activePokemon === null) return false
+    if(activeSprite >= activePokemon.sprites.length - 1){
+        activeSprite = 0
+        return setImage(activePokemon.sprites[activeSprite])
+    }
+    activeSprite = activeSprite +1
+    return setImage(activePokemon.sprites[activeSprite])
+}
+
+
+function handlePrevImage(){
+    if(activePokemon === null) return false
+    if(activeSprite <= 0){
+        activeSprite = activePokemon.sprites.length - 1
+        return setImage(activePokemon.sprites[activeSprite])
+
+    }
+    activeSprite = activeSprite -1
+    return setImage(activePokemon.sprites[activeSprite])
+}
