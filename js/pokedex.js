@@ -1,5 +1,6 @@
 //Importamos las funciones del módulo api
 import { getPokemon, getSpecies } from "./api.js"
+import { createChart } from "./charts.js";
     
 //Selector de la imagen donde se ubicará el pokemon
 const $image= document.querySelector('#image')
@@ -41,6 +42,8 @@ export async function findPokemon(id) {
     //que language.name sea igual a es (español)
     const descripción = species.flavor_text_entries.find(flavor => flavor.language.name === 'es')
     const sprites = [pokemon.sprites.front_default]
+
+    const stats = pokemon.stats.map(item => item.base_stat)
     //Iteracción para obtener todas las imagenes
     //Obtendriamos todas las imagenes del pokemon
     for(const item in pokemon.sprites){
@@ -55,7 +58,8 @@ export async function findPokemon(id) {
         sprites,
         descripción: descripción.flavor_text,
         id: pokemon.id,
-        name: pokemon.name
+        name: pokemon.name,
+        stats,
     }
 
 }
@@ -67,6 +71,7 @@ function loader(isLoading = false) {
     $screen.style.backgroundImage = img
 }
 
+let activeChart = null
 export async function setPokemon(id) {
     //Encender loader
     loader(true)
@@ -77,5 +82,9 @@ export async function setPokemon(id) {
     setImage(pokemon.sprites[0])
     setDescription(pokemon.descripción)
     speech(`${pokemon.name}. ${pokemon.descripción}`)
+    if(activeChart instanceof Chart) {
+        activeChart.destroy()
+    }
+    activeChart= createChart(pokemon.stats)
     return pokemon
 }
